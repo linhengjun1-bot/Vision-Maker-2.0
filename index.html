@@ -1,1 +1,188 @@
-.HTML<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <title>My Personal Webpage</title> </head> <body> <h1>Hello, World!</h1> <p>Welcome to my new personal site hosted on GitHub.</p > </body> </html>
+PBL Scenario 1 Report 
+Title
+Data-Driven Crime Content Planning for StreamKUS: Insights from IMDb Movie Reviews
+Team Members
+CHEN YIING 2022390235
+LIN HENGJUN 2023390205
+LI YOU 2026390111
+CAI WEIZE 2026400305
+GitHub Repository
+Create a GitHub repository for this project and paste its link here. This is required. The repository should hold the data files you collected and the code you used for text mining, so that your work can be checked and reproduced.
+1. Introduction
+In the current streaming market, platforms such as YouTube and Netflix need to understand what audiences actually enjoy before developing new content. If a company relies only on intuition, the result may not match viewers’ expectations. For StreamKUS, a new media company preparing to release its first original content, a data-driven approach can help reduce this risk by turning audience responses into useful content-planning evidence.
+
+This report uses IMDb movie review data from Kaggle to explore what kinds of content elements attract or disappoint viewers. Instead of starting from personal preference, we first looked at genre-level data, including review count and average rating. Based on this comparison, we selected the crime genre as our main focus. Crime was not chosen simply because it had the highest score or the largest number of reviews. Rather, it showed a meaningful balance between popularity and quality: it had enough audience reviews to show viewer engagement, while also maintaining a relatively strong average rating compared with many other major genres.
+
+After selecting crime as the target genre, we focused only on films within the crime category. We then divided these crime films into two groups: the top 10 highest-rated crime films and the bottom 10 lowest-rated crime films. By extracting and comparing keywords from the two groups, we aimed to identify what makes crime content successful and what weaknesses make it unpopular. The final goal of this report is to use these findings to propose new content ideas for StreamKUS that are directly based on audience data.
+2. Data Collection
+For this project, we used an IMDb movie dataset from Kaggle. The dataset contained around 46,000 valid records after basic filtering. It included useful information such as movie titles, genres, average ratings, review counts, and audience review data. This dataset was suitable for our project because IMDb reviews and ratings reflect real audience responses to existing films. Since StreamKUS wants to develop new YouTube/Netflix content based on audience preferences, this type of data can help us understand what viewers like and dislike in different kinds of films.
+
+Before selecting our target genre, we first compared different genres by looking at two factors: review count and average rating. Review count was used to measure audience engagement, because a genre with more reviews usually means that more viewers watched it and were willing to discuss it. Average rating was used to measure audience evaluation, because a higher rating suggests that viewers generally considered the content to be better in quality.
+
+<image: genre_review_count.png>
+
+<image: genre_average_rating.png>
+
+Based on this comparison, we selected the crime genre as our main focus. Crime was not chosen simply because it had the highest rating or the largest number of reviews. In fact, genres such as drama, romance, and comedy had larger review counts. However, crime had a meaningful review count of 3,980, which showed that it had enough audience engagement for analysis. At the same time, crime had an average rating of 6.27631, which was higher than many major genres such as drama, comedy, action, thriller, mystery, horror, and romance. Therefore, we considered crime to be a suitable genre because it showed a strong balance between popularity and quality.
+
+After selecting crime as the target genre, we focused only on movies within the crime category. We then divided the crime films into two groups according to their average ratings. The first group was the top 10 highest-rated crime movies, and the second group was the bottom 10 lowest-rated crime movies. This step is important because our comparison was not between all movies in the dataset, but specifically between successful and unsuccessful movies within the crime genre.
+
+<image: crime_top10_movies.png>
+
+<image: crime_bottom10_movies.png>
+
+The top 10 crime movies were used to identify the positive elements that audiences respond to in successful crime content. These films included titles such as The Promise, The Girl Next Door, Rampage, The Fast and the Furious, and Happy New Year. In contrast, the bottom 10 crime movies were used to identify common weaknesses that make crime content less successful. These included films such as The Hunters, Siberia, The Deal, Wild Horses, and Nightfall.
+
+By comparing keywords from these two groups, we aimed to find out what makes crime content appealing and what problems should be avoided when StreamKUS develops its own original content. This positive-and-negative comparison allowed us to connect audience evidence directly to future content planning.
+3. Text Mining Methods
+In this project, we used Google Colab and an API-based text mining workflow to analyze the IMDb movie dataset. The purpose of the analysis was to identify what audiences liked and disliked in crime movies by comparing the reviews of the top 10 and bottom 10 crime films within the crime genre.
+
+First, we conducted data cleaning. Since the original Kaggle dataset contained a large number of movies from different genres, we removed invalid or missing data and kept the columns that were useful for our analysis, including movie title, genre, average rating, review count, and review text. After that, we filtered the dataset and focused only on movies categorized under the crime genre. This step was important because our goal was not to compare all movies, but to understand the success and failure factors within crime content specifically.
+
+Second, we applied stop word removal. Common words such as “the,” “a,” “and,” “is,” and “of” appear frequently in English reviews, but they do not provide much useful information about audience preferences. By removing these stop words, we were able to focus on more meaningful expressions related to story, pacing, suspense, character, acting, realism, and production quality.
+
+Third, we used keyword extraction through the API. After preparing the review data, we used the API to extract meaningful keywords from the reviews of the top 10 and bottom 10 crime movies. For the top 10 crime movies, the extracted keywords helped us identify what viewers praised in successful crime content. For the bottom 10 crime movies, the keywords showed what viewers criticized in less successful crime content. This comparison helped us understand both what StreamKUS should include and what it should avoid when developing new content.
+
+Finally, we used bigram analysis to identify meaningful two-word phrases in the reviews. This method was useful because single words are sometimes too general, while two-word phrases can show more specific audience reactions. For example, phrases such as “fast paced,” “character development,” “edge of my seat,” “wooden acting,” and “cheap special effects” provide clearer evidence about what viewers noticed and valued. After extracting the keywords and bigrams, we grouped similar expressions into broader categories such as pacing, suspense, character, story, acting, realism, and production quality.
+
+Through this API-based text mining process, we turned raw audience reviews into interpretable evidence. The extracted keywords and bigrams were then used as the basis for our findings and content proposals for StreamKUS.
+4. Findings
+After selecting the top 10 and bottom 10 movies within the crime genre, we compared the extracted keywords and bigrams from both groups. The purpose of this section is to identify what makes crime content attractive to audiences and what kinds of problems make crime content less successful.
+
+4.1 Popular crime movies usually have fast pacing and strong audience engagement
+
+One of the clearest findings from the top 10 crime movies is that audiences respond positively to fast and energetic storytelling. In the popular crime movie keyword results, pacing-related phrases appeared frequently. For example, phrases such as “fast paced”, “roller coaster ride”, “breakneck speed”, “driving pace”, and “crescendo moments” suggest that viewers enjoy crime content that moves quickly and keeps them engaged.
+
+Among these phrases, “fast paced” appeared 3 times, making it one of the most repeated positive keywords. “Roller coaster ride” also appeared 2 times, showing that audiences value stories that create constant excitement and emotional movement. This suggests that successful crime content should avoid long, slow, or unnecessary scenes. Instead, it should keep the story moving through clear conflict, investigation, action, or suspense.
+
+This finding is important for StreamKUS because YouTube and Netflix audiences often expect content that can quickly capture their attention. For future crime content, StreamKUS should design episodes with strong openings, continuous narrative momentum, and cliffhanger-style endings.
+
+4.2 Suspense and tension are key elements of successful crime content
+
+The keyword results also show that suspense is a major reason why audiences enjoy popular crime movies. In the top 10 crime movie keywords, suspense-related expressions included “edge of my seat”, “high tension”, “nerve-tingling suspense”, “plot twists”, “cat and mouse thriller”, and “heist thriller.”
+
+These keywords suggest that audiences do not only want crime stories about criminals or detectives. They want stories that create uncertainty, danger, and curiosity. Phrases such as “edge of my seat” and “nerve-tingling suspense” show that viewers enjoy being emotionally pulled into the story and kept uncertain about what will happen next.
+
+In contrast, the bottom 10 crime movies contained negative phrases such as “no suspense”, “lack of thriller suspense”, “broke the anemic tension”, and “laughable death scenes.” This comparison shows that suspense is not optional for crime content. If a crime movie fails to build tension, audiences are likely to feel bored or disappointed.
+
+Therefore, StreamKUS should focus on crime stories with strong mystery, hidden truth, investigation, betrayal, and unexpected twists. These elements can help maintain viewer interest across episodes.
+
+4.3 Strong character development makes crime stories more appealing
+
+Another important finding is that audiences care about characters, not only the crime plot itself. In the popular crime movie keyword results, character-related phrases had a strong presence. The category of character appeared 16 times, which was one of the highest category counts in the positive keyword table.
+
+Examples include “character development”, “character build”, “character study”, “well-developed primary characters”, “average joe”, “obsessive policeman”, “psychopathic protagonist”, and “undercover detective.” These phrases show that audiences are interested in crime stories when the characters have clear personalities, motivations, and emotional depth.
+
+This means that a successful crime story should not depend only on murders, robberies, or investigations. The audience also wants to understand why characters make certain choices, how they change, and what emotional conflicts they face. A detective, criminal, victim, or ordinary person involved in crime becomes more interesting when the story gives them personal motivation and development.
+
+The bottom 10 crime movie keywords also support this point. Negative phrases such as “clichéd character development”, “flawless main character”, and “inconsistent character behavior” show that audiences dislike flat, unrealistic, or poorly written characters. Therefore, StreamKUS should create crime content with complex characters rather than simple good-versus-bad roles.
+
+4.4 Story structure is the biggest weakness in unpopular crime movies
+
+The strongest negative finding from the bottom 10 crime movies is weak storytelling. In the negative keyword table, the story_element category appeared 35 times, making it the most frequent negative category. This suggests that story problems are the biggest reason why crime movies become unpopular.
+
+The negative keywords included “clunky storytelling”, “cliched script”, “coherent plot failure”, “confusing plot introduction”, “convoluted serial killer plot”, “disorganized plot structure”, “messy script”, “empty story”, “no consistent story”, and “glaring plot holes.” These phrases show that audiences strongly dislike crime films when the plot is confusing, predictable, or poorly organized.
+
+This finding is especially important because crime stories usually depend on logic. Viewers expect clues, motives, twists, and resolutions to connect clearly. If the plot does not make sense, audiences lose trust in the story. Even if a film has action or crime elements, weak storytelling can make it feel boring or amateurish.
+
+For StreamKUS, this means that future crime content should be planned with a clear narrative structure. The story should have a strong central mystery, logical clues, believable character motivation, and a satisfying ending.
+
+4.5 Poor pacing, weak acting, and low production quality make crime content fail
+
+The bottom 10 crime movie keywords also show that audiences criticize crime movies when the technical and performance quality is weak. After story problems, the most frequent negative categories were production with 25 counts, pacing with 19 counts, and acting with 17 counts.
+
+For pacing, negative phrases included “anti-climactic ending”, “choppy script flow”, “dragging climax scene”, “drawn out pacing”, “meandering narrative structure”, and “mind-numbingly boring.” These keywords suggest that audiences dislike crime movies that move too slowly, lose focus, or fail to build toward a strong climax.
+
+For production quality, the negative keywords included “awful editing”, “cheap special effects”, “amateurish digital camera-work”, “dark lighting”, “badly dubbed audio”, “poor sound recording”, and “jarring scene transitions.” These phrases show that viewers notice technical weaknesses clearly. Poor editing, lighting, sound, or visual effects can break immersion and make the content feel low quality.
+
+For acting, the negative keywords included “amateurish acting performances”, “boring acting performances”, “artificial accents”, “forced line delivery”, “over-dramatic dialogues”, and “wooden acting.” This means that even if the plot idea is interesting, weak performances can prevent audiences from emotionally connecting with the story.
+
+Overall, these negative findings show that StreamKUS should not only focus on the idea of the story. It also needs to consider pacing control, acting quality, editing, lighting, sound, and visual presentation.
+
+4.6 Genre mixing can attract audiences, but it must be controlled carefully
+
+The positive keyword results show that audiences may enjoy crime content when it is mixed with other genres. In the popular crime movie keywords, the hybrid_genre category appeared 16 times. Examples included “dark humor”, “cat and mouse thriller”, “heist thriller”, “action disaster film”, “romantic comedy adventure”, “video game adaptation”, and “masala entertainer.”
+
+This suggests that crime content does not need to be limited to serious detective stories. It can also include action, comedy, romance, thriller, or adventure elements. For example, “dark humor” appeared 2 times, showing that humor can make crime content more entertaining and accessible when used properly.
+
+However, the bottom 10 crime movie keywords also show a warning. Negative phrases such as “abrupt genre shift” and “identity crisis” suggest that audiences dislike genre mixing when it feels confusing or inconsistent. Therefore, genre mixing should support the main crime story instead of distracting from it.
+
+For StreamKUS, this means that hybrid crime content can be a good strategy, especially for YouTube/Netflix audiences, but the tone and genre identity must remain clear.
+
+4.7 Summary of findings
+
+Overall, the keyword comparison between the top 10 and bottom 10 crime movies shows that successful crime content depends on several key elements. Audiences are attracted to fast pacing, suspense, character development, emotional engagement, strong production value, and controlled genre mixing. At the same time, they react negatively to clunky storytelling, predictable plots, poor pacing, weak acting, low production quality, unrealistic scenes, and confusing genre direction.
+
+In other words, the data suggests that audiences do not like crime content simply because it includes crime. They like crime content when the story is exciting, logical, emotionally engaging, and well-produced. These findings provide the basis for our StreamKUS content proposals in the next section.
+5. Content Proposals
+Based on the findings from the keyword comparison, we propose three content ideas for StreamKUS. Each proposal is designed according to the positive elements found in popular crime movies and the negative elements found in unpopular crime movies. In this way, the proposals are not based on intuition, but on audience evidence from the IMDb review data.
+
+Proposal 1: The Last Message
+
+Genre: Crime thriller / Mystery series
+Format: Netflix-style short series, 6 episodes
+Target audience: Young adults and viewers who enjoy suspenseful crime stories
+
+Concept:
+The Last Message is a crime thriller series about a university student who disappears after sending a mysterious voice message to her best friend. The message contains only a few unclear sounds: footsteps, a train announcement, and someone whispering a name. Her friends begin to investigate the case by following digital traces, old chat records, and hidden connections on campus. As the story develops, they discover that the disappearance is connected to a larger crime network involving identity theft, online blackmail, and a past unsolved case.
+
+Connection to findings:
+This proposal is based on the finding that popular crime movies often contain fast pacing, suspense, tension, and plot twists. Keywords such as “fast paced,” “edge of my seat,” “cat and mouse thriller,” “plot twists,” and “nerve-tingling suspense” show that audiences enjoy crime stories that keep them curious and emotionally engaged. Therefore, this series uses a mystery-driven structure, short episodes, and cliffhanger endings to maintain audience attention.
+
+At the same time, this proposal avoids the weaknesses found in unpopular crime movies, such as “confusing plot introduction,” “clunky storytelling,” “no consistent story,” and “glaring plot holes.” To prevent these problems, the story should have a clear central mystery, logical clues, and a carefully planned ending. Each episode should reveal one important piece of information while still leaving enough suspense for the next episode.
+
+Proposal 2: Ordinary Witness
+
+Genre: Character-driven crime drama
+Format: Netflix-style limited series, 8 episodes
+Target audience: Viewers who like emotional stories, realistic characters, and moral conflict
+
+Concept:
+Ordinary Witness follows an ordinary delivery driver who accidentally witnesses a violent crime during a late-night shift. At first, he wants to stay silent because he is afraid of losing his job and putting his family in danger. However, as the victim’s story becomes connected to his own past, he is forced to choose between personal safety and justice. The series focuses not only on the crime itself, but also on the emotional pressure, fear, guilt, and moral dilemma of an ordinary person involved in a dangerous case.
+
+Connection to findings:
+This proposal is based on the finding that audiences value strong character development and emotional connection in successful crime content. In the positive keyword results, phrases such as “character development,” “character study,” “emotional connection,” “average joe,” and “well-developed primary characters” show that viewers want more than crime scenes or action. They also want characters with believable motivations and emotional depth.
+
+This proposal uses an ordinary protagonist rather than a perfect detective or superhero-like main character. This choice is also based on the negative keywords from unpopular crime movies, such as “flawless main character,” “clichéd character development,” and “inconsistent character behavior.” By making the main character vulnerable, conflicted, and realistic, the series can create stronger audience empathy.
+
+The story also avoids a purely predictable crime structure. Instead of focusing only on “who committed the crime,” it asks a more emotional question: what would an ordinary person do after seeing something they were never supposed to see? This makes the crime story more human and memorable.
+
+Proposal 3: Small Crime, Big Trouble
+
+Genre: Dark comedy crime web series
+Format: YouTube-style short-form series, 10–12 episodes
+Target audience: Younger viewers who prefer fast, entertaining, and bingeable content
+
+Concept:
+Small Crime, Big Trouble is a dark comedy crime series about three part-time workers at a small convenience store who accidentally become involved in a local criminal case. After finding a bag of stolen money in the storage room, they decide to hide it instead of reporting it. However, every attempt to solve the problem creates a bigger problem. Each episode follows one mistake, one cover-up, and one unexpected twist, turning a small crime into a chaotic chain of events.
+
+Connection to findings:
+This proposal is based on the finding that genre mixing can attract audiences when it is controlled carefully. In the positive keyword results, phrases such as “dark humor,” “cat and mouse thriller,” “heist thriller,” and “roller coaster ride” suggest that audiences can enjoy crime content that combines suspense with entertainment. For a YouTube-style release, dark comedy is especially useful because short episodes need to capture attention quickly and remain easy to watch.
+
+The series also applies the finding that audiences like fast pacing. Each episode should begin with a clear problem and end with a new complication or cliffhanger. This structure responds to positive keywords such as “fast paced,” “breakneck speed,” and “driving pace.”
+
+However, the proposal also needs to avoid the negative problems found in unsuccessful crime movies. Keywords such as “abrupt genre shift” and “identity crisis” show that audiences dislike genre mixing when the tone becomes unclear. Therefore, although this series includes comedy, the crime plot should remain central. The humor should come from character choices and escalating situations, not from random jokes that break the story logic.
+
+Proposal Summary
+
+These three proposals reflect different ways StreamKUS can use the findings from the IMDb review data.
+
+The Last Message focuses on suspense, fast pacing, mystery, and plot twists.
+Ordinary Witness focuses on character development, emotional connection, and moral conflict.
+Small Crime, Big Trouble focuses on dark humor, genre mixing, short-form pacing, and audience engagement.
+
+Together, these proposals show how the extracted keywords can be turned into practical content ideas. The data suggests that StreamKUS should create crime content that is exciting, logical, emotionally engaging, and well-structured. At the same time, StreamKUS should avoid predictable plots, weak characters, poor pacing, confusing storylines, and unclear genre direction.
+6. Conclusion
+This report used an IMDb movie dataset from Kaggle to support data-driven content planning for StreamKUS. Instead of choosing a content direction based only on intuition, we first compared different genres through review count and average rating. Based on this comparison, we selected the crime genre because it showed a good balance between audience popularity and content quality. After that, we focused only on movies within the crime genre and compared the top 10 highest-rated crime films with the bottom 10 lowest-rated crime films.
+
+Through data cleaning, stop word removal, keyword extraction, and bigram analysis, we identified several important patterns in audience responses. The keywords from the top 10 crime movies showed that audiences are attracted to fast pacing, strong suspense, character development, emotional connection, high production value, and controlled genre mixing. In contrast, the keywords from the bottom 10 crime movies showed that audiences strongly dislike clunky storytelling, predictable plots, weak pacing, poor acting, low production quality, unrealistic scenes, and confusing genre direction.
+
+Based on these findings, we proposed three content ideas for StreamKUS. The Last Message uses suspense, fast pacing, and plot twists to create a mystery-driven crime thriller. Ordinary Witness focuses on character development, emotional conflict, and moral dilemma to create a more emotional crime drama. Small Crime, Big Trouble combines dark humor with crime storytelling to create a short-form web series suitable for YouTube-style viewing. Each proposal was designed according to the audience preferences found in the keyword analysis.
+
+However, this project also has some limitations. First, the analysis was based on IMDb review data, so it may not fully represent all YouTube or Netflix audiences. Second, our keyword interpretation involved some manual grouping, which means that there may be some subjectivity in how the keywords were categorized. Third, we focused mainly on the crime genre, so the findings may not apply directly to other genres such as romance, horror, or comedy.
+
+With more time and data, we could expand the analysis by collecting comments directly from YouTube, Netflix-related discussions, or social media platforms. We could also compare different age groups, regions, or viewing platforms to understand audience preferences more precisely. Still, the current analysis shows that audience reviews can provide useful evidence for content planning. For StreamKUS, the most important lesson is that successful crime content should be exciting, logical, emotionally engaging, and well-structured.
+7. References 
+Kaggle. IMDb Movie Dataset.
+Goggle Collab
+Genimi API
